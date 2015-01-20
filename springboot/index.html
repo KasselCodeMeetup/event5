@@ -106,11 +106,9 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
-	@Controller
-	@RequestMapping
+	@RestController
 	public static class DemoController {
 		@RequestMapping("/code-meetup")
-		@ResponseBody
 		public String helloWorld() {
 			return "Hello Code Meetup";
 		}
