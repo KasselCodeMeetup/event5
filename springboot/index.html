@@ -110,6 +110,7 @@ public class DemoApplication {
 	@RequestMapping
 	public static class DemoController {
 		@RequestMapping("/code-meetup")
+		@ResponseBody
 		public String helloWorld() {
 			return "Hello Code Meetup";
 		}
