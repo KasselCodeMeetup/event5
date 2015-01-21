@@ -1,10 +1,310 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+  <meta charset="UTF-8">
+  <title>Kassel Code Meetup - Polymer</title>
+  <script type="text/javascript" src="bower_components/platform/platform.js"></script>
+  <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel='import' href='bower_components/ninja-presentation/src/ninja-presentation.html'>
+  <link rel="import" href="bower_components/core-icon/core-icon.html">
+  <link rel="import" href="bower_components/core-icons/core-icons.html">
+  <link rel="import" href="bower_components/prettify-element/prettify-element.html">
+  <link rel="import" href="bower_components/google-map/google-map.html">
+  <link
+      href='http://fonts.googleapis.com/css?family=Roboto:500,900italic,900,400italic,100,700italic,300,700,500italic,100italic,300italic,400'
+      rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/style.css">
+  <style type="text/css">
+    ninja-slide::shadow .container {
+      font-size: 1.0em;
+      background: #FFFFFF;
+      -webkit-align-items: flex-start;
+      align-items: flex-start;
+    }
+
+    ninja-slide /deep/ h1 {
+      font-size: 2.5em!important;
+    }
+
+    ninja-slide /deep/ li {
+      font-size: 1.5em!important;
+    }
+
+    ninja-slide /deep/ p {
+      font-size: 1.5em!important;
+    }
+
+    prettify-element /deep/ .prettyprint {
+      font-size: 1em!important;
+      background: #f2f2f2;
+    }
+    prettify-element /deep/ .prettyprint /deep/ span {
+      font-size: 0.7em!important;
+    }
+
+    body /deep/ .prettyprint {
+      font-size: 1.4em!important;
+    }
+
+    body /deep/ binding-tag {
+      font-size: 1.4em!important;
+    }
+
+    body /deep/ binding-tag imput {
+      font-size: 1.4em!important;
+    }
+
+  </style>
 </head>
-<body>
+<body unresolved>
+<polymer-element name="demo-tag" attributes="greeting">
+  <template>
+    <p>Hello {{greeting}}!</p>
+    <input value="{{greeting}}"/>
+  </template>
+  <script>
+    Polymer('demo-tag', {
+      greeting : "World"
+    });
+  </script>
+</polymer-element>
+
+
+
+
+<ninja-presentation font='Roboto'>
+  <!--### 1 ###-->
+  <ninja-slide>
+    <!--<core-icon icon="polymer"></core-icon>-->
+    <h1>Kassel Code Meetup - <strong>Polymer</strong></h1>
+
+    <p> Sandro Kock</p>
+    <ul>
+      <li>
+        github - https://github.com/sandro-k
+      </li>
+      <li>
+        twitter - @_syn_k
+      </li>
+      <li>
+        MQTTlens - <a href="http://goo.gl/fM0AY2">http://goo.gl/fM0AY2</a>
+      </li>
+    </ul>
+  </ninja-slide>
+
+  <!--### 2 ###-->
+  <ninja-slide>
+    <h1>Motivation - <strong>Web Components</strong></h1>
+    <p>Strukturierung von Web-Anwendungen</p>
+    <ul>
+      <li>Custom Elements</li>
+      <li>HTML Imports</li>
+      <li>Data Binding</li>
+      <li>Shadow DOM</li>
+    </ul>
+  </ninja-slide>
+
+
+  <!--### 5 ###-->
+  <ninja-slide>
+    <h1>Web Components - <strong>Custom Elements</strong></h1>
+    <prettify-element>
+<template>
+<polymer-element name="demo-tag" attributes="greeting">
+  <template>
+    <p>Hello {{greeting}}!</p>
+    <input value="{{greeting}}"/>
+  </template>
+
+  <script>
+    Polymer('demo-tag', {
+      greeting : "World"
+    });
+  </script>
+</polymer-element>
+</template>
+</prettify-element>
+  </ninja-slide>
+
+  <!--### 2 ###-->
+  <ninja-slide>
+    <h1>Web Components - <strong>HTML Imports</strong></h1>
+    <prettify-element>
+<link rel="import" href="bower_components/google-map/google-map.html"></prettify-element>
+
+    <style>
+      google-map {
+        display: block;
+        height: 350px;
+      }
+    </style>
+
+    <google-map class="fragment" latitude="51.31816" longitude="9.48997" zoom="16">
+      <google-map-marker latitude="51.31816" longitude="9.48997">
+        <span>Kassel Code Meetup</span><br/>
+        <img src="img/code_meetup.jpg" />
+      </google-map-marker>
+    </google-map>
+    <!--<paper-button>Button</paper-button>-->
+
+    <prettify-element class="fragment">
+<template>
+<google-map latitude="51.31816" longitude="9.48997" zoom="16">
+  <google-map-marker latitude="51.31816" longitude="9.48997">
+    <span>Kassel Code Meetup</span><br/>
+    <img src="img/code_meetup.jpg" />
+  </google-map-marker>
+</google-map></template>
+    </prettify-element>
+
+  </ninja-slide>
+
+  <!--### 3 ###-->
+  <ninja-slide>
+    <h1>Web Components - <strong>Data Binding & Shadow DOM</strong></h1>
+    <prettify-element>
+    <template>
+<p>Hello {{greeting}}!</p></template>
+    </prettify-element>
+
+    <div class="fragment">
+      <polymer-element name="demo-tag2" attributes="greeting" noscript>
+        <template>
+          <demo-tag greeting="{{foo}}"></demo-tag>
+          <demo-tag greeting="{{foo}}"></demo-tag>
+        </template>
+      </polymer-element>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="fragment">
+            <demo-tag></demo-tag>
+          </div>
+
+          <div class="fragment">
+            <demo-tag greeting="Code Meetup"></demo-tag>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="fragment">
+            <demo-tag2></demo-tag2>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </ninja-slide>
+
+
+  <!--### 5 ###-->
+  <ninja-slide>
+    <style>
+      img {
+        display: block;
+        height: 400px!important;
+      }
+    </style>
+  <h1>Was ist Polymer</h1>
+    <img class="responsive" src="img/polymer.png" />
+    <p class="fragment"><strong>Eine polyfill Bibliothek zur Nutzung von Web Components in 'aktuellen' Browsern.</strong></p>
+  </ninja-slide>
+
+  <!--### 5 ###-->
+  <ninja-slide>
+    <h1>Browser Unterstützung</h1>
+    <table class="compatibility">
+      <tr>
+        <td class="none empty"></td><td class="none">Chrome <br/> Android</td><td class="none">Chrome </td><td class="none">Firefox</td><td class="none">IE 10+ </td><td class="none">Safari 6+</td><td class="none">Mobile Safari</td>
+      </tr>
+      <tr>
+        <td class="none">Template</td><td>              </td><td>       </td><td>       </td><td class="alert"></td><td class="alert">         </td><td class="alert">             </td>
+      </tr>
+      <tr>
+        <td class="none">Mutation Observer</td><td>              </td><td>       </td><td>       </td><td class="alert"></td><td>         </td><td>             </td>
+      </tr>
+      <tr>
+        <td class="none">Custom Elements</td><td>              </td><td>       </td><td>       </td><td></td><td>         </td><td>             </td>
+      </tr>
+      <tr>
+        <td class="none">Shadow DOM</td><td>              </td><td>       </td><td>       </td><td class="alert"></td><td>         </td><td>             </td>
+      </tr>
+      <tr>
+        <td class="none">Object.observe()</td><td>              </td><td>       </td><td>       </td><td></td><td>         </td><td>             </td>
+      </tr>
+      <tr>
+        <td class="none">Web Animations</td><td>              </td><td>       </td><td>       </td><td></td><td>         </td><td>             </td>
+      </tr>
+      <tr>
+        <td class="none">Platform</td><td>              </td><td>       </td><td>       </td><td></td><td>         </td><td>             </td>
+      </tr>
+    </table>
+
+    <table class="compatibility">
+      <tr>
+        <td class="none">Working</td><td>&nbsp; &nbsp; &nbsp;</td>
+      </tr>
+      <tr>
+        <td class="none">Limited</td><td class="alert"> &nbsp; &nbsp; &nbsp;</td>
+      </tr>
+    </table>
+
+  </ninja-slide>
+  <ninja-slide>
+    <h1>Live Live Demo - <strong>MQTTlens</strong></h1>
+    <ul>
+      <li class="fragment">
+        Chrome App zum Testen von MQTT (Publish & Subscribe)
+      </li>
+      <li class="fragment">
+        Basierend auf Polymer
+      </li>
+      <li class="fragment">
+        Erstellt mit HTML5, SASS, JavaScript
+      </li>
+      <li class="fragment">
+        Tools - Grunt, Browserify, Node.js, Vulcanize
+      </li>
+      <li class="fragment">
+        Open Source auf <a href="https://github.com/sandro-k/MQTTLensChromeApp">github</a>
+      </li>
+    </ul>
+  </ninja-slide>
+
+  <ninja-slide>
+    <h1>Weitere Informationen</h1>
+    <ul>
+      <li>
+        <a href="https://www.polymer-project.org/">polymer-project.org</a>
+      </li>
+      <li>
+        <a href="http://webcomponents.org/">webcomponents.org</a>
+      </li>
+      <li>
+        <a href="http://customelements.io/">customelements.io</a>
+      </li>
+    </ul>
+  </ninja-slide>
+
+  <ninja-slide>
+    <h1>Vielen Dank & Fragen</h1>
+  </ninja-slide>
+
+  <!--<ninja-slide>-->
+    <!--<h1>Zusammenfassung</h1>-->
+    <!--<ul></ul>-->
+  <!--</ninja-slide>-->
+
+
+
+  <!--#codemeetup-->
+
+</ninja-presentation>
+
+
+
+
 
 </body>
 </html>
