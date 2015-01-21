@@ -1,0 +1,28 @@
+{
+  "name": "CodeMeetupPolymerJs",
+  "version": "0.0.1",
+  "authors": [
+    "Sandro Kock <sandro.kock@gmail.com>"
+  ],
+  "description": "Eine kurze Vorstellung von Polymer.js",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "https://github.com/sandro-k",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ninja-presentation": "~0.3.0",
+    "google-map": "~0.4.0",
+    "prettify-element": "Polymer/prettify-element#~0.5.2"
+  },
+  "resolutions": {
+    "core-component-page": "^0.3.0",
+    "polymer": "^0.3.4",
+    "prettify-element": "^0.3.0"
+  }
+}
